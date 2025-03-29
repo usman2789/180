@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Archivo_Black } from "next/font/google";
 import Footer from "@/components/footer";
+import Header from "@/components/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +42,7 @@ export default function RootLayout({
           <div>
             {children}
           </div>
-          <Footer/>
+          {/* <Header /> */}
         </body>
       </html>
     </ClerkProvider>

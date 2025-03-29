@@ -6,6 +6,7 @@ import Platform from "@/components/platform";
 import Features from "@/components/features";
 import Strategies from "@/components/strategies";
 import Feedback from "@/components/feedback";
+import Footer from "@/components/footer";
 import { LucideMessageSquareHeart } from "lucide-react";
 
 
@@ -18,6 +19,7 @@ export default function Home() {
     <Features />
     <Strategies />
     <Feedback />
+    <Footer/>
     
     
    </div>

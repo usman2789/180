@@ -31,53 +31,49 @@ const Header = () => {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-lg" : "bg-white"
+        scrolled ? "bg-white shadow-amber-300" : "bg-white"
       }`}
     >
-      <div className="container mx-auto px-4 py-3 md:py-5">
+      <div className="container mx-auto px-4 py-3 md:py-5 mb-1.5">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/">
-              <Image 
-                src="/header-logo.png" 
-                alt="Aweera Innovations" 
-                width={130} 
-                height={50} 
-                className="h-auto"
-              />
+             <h1 className="text-2xl h-8  text-center font-bold text-pink-500 items-center"> Taleem Ka Safar
+               
+                </h1>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-5">
             <Link 
               href="/" 
-              className="text-[#001F3F] hover:text-opacity-80 font-bold tracking-wide transition-colors"
+              className="text-[#f226e8] hover:text-opacity-80 font-bold tracking-wide transition-colors"
             >
               HOME
             </Link>
             <Link 
               href="/#platform" 
-              className="text-[#001F3F] hover:text-opacity-80 font-bold tracking-wide transition-colors"
+              className="text-[#f226e8] hover:text-opacity-80 font-bold tracking-wide transition-colors"
             >
               PLATFORM
             </Link>
             <Link 
               href="/#features" 
-              className="text-[#001F3F] hover:text-opacity-80 font-bold tracking-wide transition-colors"
+              className="text-[#f226e8] hover:text-opacity-80 font-bold tracking-wide transition-colors"
             >
               FEATURE
             </Link>
             <Link 
               href="/#strategies" 
-              className="text-[#001F3F] hover:text-opacity-80 font-bold tracking-wide transition-colors"
+              className="text-[#f226e8] hover:text-opacity-80 font-bold tracking-wide transition-colors"
             >
               STRATEGIES
             </Link>
             <Link 
               href="/#feedback" 
-              className="text-[#001F3F] hover:text-opacity-80 font-bold tracking-wide transition-colors"
+              className="text-[#f226e8] hover:text-opacity-80 font-bold tracking-wide transition-colors"
             >
               FEEDBACK
             </Link>

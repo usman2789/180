@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="relative w-full h-[480px] md:h-[480px] lg:h-[580px] overflow-hidden" style={{ background: 'linear-gradient(90deg, rgba(0,24,36,0.9436566863073355) 0%, rgba(9,71,121,1) 37%, rgba(0,154,255,1) 92%)' }}>
+    <div className="relative w-full h-[480px] md:h-[480px] lg:h-[580px] overflow-hidden bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500" >
       {/* Content overlay */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 md:px-8 lg:px-16">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">

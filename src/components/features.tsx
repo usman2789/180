@@ -21,12 +21,12 @@ const Features = () => {
     ];
 
     return (
-        <section id='features' className="py-16 bg-gray-50">
+        <section id='features' className="py-16 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
             <div className="container mx-auto px-4">
-                <h2 className="text-4xl font-bold text-center mb-8 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                <h2 className="text-4xl font-bold text-center mb-8 text-white">
                     Discover the Features of Taleem ka Safar
                 </h2>
-                <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                <p className="text-center text-white mb-12 max-w-2xl mx-auto">
                     Empower your learning journey with our comprehensive features designed to enhance your educational experience
                 </p>
                 

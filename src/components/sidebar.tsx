@@ -14,13 +14,7 @@ const Sidebar = () => {
         isExpanded ? "w-56" : "w-16"
       }`}
     >
-      {/* Toggle Button */}
-      <button
-        className="absolute top-4 right-[-15px] bg-white text-purple-700 rounded-full p-1 shadow-md"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        {isExpanded ? <FaChevronLeft size={20} /> : <FaChevronRight size={20} />}
-      </button>
+      
       
       {/* Menu Items */}
       <nav className="flex flex-col space-y-4 mt-10">
@@ -31,7 +25,7 @@ const Sidebar = () => {
           <FaChartBar /> {isExpanded && <span>Result</span>}
         </Link>
 
-        <Link href="/#strategies" className="flex items-center space-x-2 text-lg hover:text-orange-300">
+        <Link href="/blog" className="flex items-center space-x-2 text-lg hover:text-orange-300">
           <FaBullseye /> {isExpanded && <span>Strategies</span>}
         </Link>
 
@@ -43,6 +37,13 @@ const Sidebar = () => {
           <FaComments /> {isExpanded && <span>Join for updates</span>}
         </Link>
       </nav>
+      {/* Toggle Button */}
+      <button
+        className="mt-4 bg-white text-purple-700 rounded-full p-1 shadow-md self-end"
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        {isExpanded ? <FaChevronLeft size={20} /> : <FaChevronRight size={20} />}
+      </button>
 
       {/* Logo Container */}
       {/* <div className="w-full flex justify-center items-center py-4 border-t border-white/30">

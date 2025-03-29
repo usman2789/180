@@ -3,106 +3,115 @@
 import React, { useState } from 'react';
 
 const Feedback: React.FC = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        number: '',
-        subject: '',
-        message: ''
+  const [formData, setFormData] = useState({
+    name: '',
+    number: '',
+    subject: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log(formData);
+    // Reset form after submission (optional)
+    setFormData({
+      name: '',
+      number: '',
+      subject: '',
+      message: ''
     });
+  };
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-4">
+      <div className="bg-white rounded-lg shadow-2xl w-full max-w-md transition-transform duration-300 hover:scale-102 transform">
+        <div className="p-6 space-y-6">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-gray-800 mb-1">Your Feedback is Valuable for Us</h2>
+            <p className="text-gray-600">If you want to collaborate, we'd love to hear from you!</p>
+          </div>
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Handle form submission here
-        console.log(formData);
-    };
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                required
+              />
+            </div>
 
-    return (
-        
-        <div id='feedback' className="max-w-2xl mx-auto p-6">
-            <h2 className="text-3xl font-bold text-center mb-6">
-                Your Feedback is Valuable for Us
-            </h2>
-            <p className="text-center mb-8 text-gray-600">
-                If you want to collaborate, we'd love to hear from you!
-            </p>
+            <div className="space-y-2">
+              <label htmlFor="number" className="block text-sm font-medium text-gray-700">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="number"
+                name="number"
+                value={formData.number}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                required
+              />
+            </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                    <label htmlFor="name" className="block mb-2 text-sm font-medium">
-                        Name
-                    </label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full p-2 border rounded-md"
-                        required
-                    />
-                </div>
+            <div className="space-y-2">
+              <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                required
+              />
+            </div>
 
-                <div>
-                    <label htmlFor="number" className="block mb-2 text-sm font-medium">
-                        Phone Number
-                    </label>
-                    <input
-                        type="tel"
-                        id="number"
-                        name="number"
-                        value={formData.number}
-                        onChange={handleChange}
-                        className="w-full p-2 border rounded-md"
-                        required
-                    />
-                </div>
+            <div className="space-y-2">
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows={4}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                required
+              />
+            </div>
 
-                <div>
-                    <label htmlFor="subject" className="block mb-2 text-sm font-medium">
-                        Subject
-                    </label>
-                    <input
-                        type="text"
-                        id="subject"
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        className="w-full p-2 border rounded-md"
-                        required
-                    />
-                </div>
-
-                <div>
-                    <label htmlFor="message" className="block mb-2 text-sm font-medium">
-                        Message
-                    </label>
-                    <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        className="w-full p-2 border rounded-md h-32"
-                        required
-                    />
-                </div>
-
-                <button
-                    type="submit"
-                    className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
-                >
-                    Submit Feedback
-                </button>
-            </form>
+            <button
+              type="submit"
+              className="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium rounded-md hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transform transition-all duration-200 hover:-translate-y-1 shadow-md"
+            >
+              Submit Feedback
+            </button>
+          </form>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Feedback;
