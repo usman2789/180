@@ -1,21 +1,33 @@
-// src/app/blog/[slug]/page.tsx
 import { getBlogBySlug, getRelatedBlogs } from '@/lib/data';
-import { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import type { Metadata } from 'next';
 
-type Props = {
+// Generate metadata for SEO
+export async function generateMetadata({
+  params,
+}: {
   params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+}): Promise<Metadata> {
+  const blog = await getBlogBySlug(params.slug);
+  return {
+    title: `${blog?.title || 'Blog Post'} | Your Site Name`,
+    description: blog?.excerpt || 'Read this interesting blog post',
+    openGraph: {
+      images: blog?.coverImage ? [{ url: blog.coverImage }] : [],
+    },
+  };
+}
 
-export default async function BlogPost({ params }: Props) {
-
-
+export default async function BlogPost({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const blog = await getBlogBySlug(params.slug);
   
   if (!blog) {
@@ -41,6 +53,7 @@ export default async function BlogPost({ params }: Props) {
               fill
               priority
               className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
           
