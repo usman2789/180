@@ -7,12 +7,15 @@ import { ArrowLeft } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
-// Remove custom type definitions that conflict with Next.js 15's generated types
-export default async function BlogPost({ 
-  params,
-}: {
-  params: { slug: string };
-}) {
+// Update the interface to match Next.js 15 requirements
+interface PageProps {
+  params: {
+    slug: string;
+  };
+  searchParams: Record<string, string | string[] | undefined>;
+}
+
+export default async function BlogPost({ params, searchParams }: PageProps) {
   const blog = await getBlogBySlug(params.slug);
   
   if (!blog) {
@@ -22,9 +25,9 @@ export default async function BlogPost({
   const relatedBlogs = await getRelatedBlogs(blog.id, blog.category);
   
   return (
-    <div className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500  ">
+    <div className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
       <Header />
-      <div className="container mx-auto  max-w-6xl">
+      <div className="container mx-auto max-w-6xl">
         <Link href="/blog" className="flex items-center text-center text-white mb-4 pt-28 hover:underline">
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Strategies
@@ -49,7 +52,7 @@ export default async function BlogPost({
               <div className="flex items-center">
                 <span className="text-white">{blog.author}</span>
               </div>
-              <span className="text-wite">{blog.readTime} min read</span>
+              <span className="text-white">{blog.readTime} min read</span>
             </div>
             
             <div className="prose prose-lg max-w-none">
