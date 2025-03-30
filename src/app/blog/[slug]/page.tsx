@@ -7,15 +7,12 @@ import { ArrowLeft } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
-// Update the type definition to match Next.js 15's PageProps requirement
-interface PageProps {
-  params: {
-    slug: string;
-  };
-  searchParams: Record<string, string | string[] | undefined>;
-}
-
-export default async function BlogPost({ params, searchParams }: PageProps) {
+// Remove custom type definitions that conflict with Next.js 15's generated types
+export default async function BlogPost({ 
+  params,
+}: {
+  params: { slug: string };
+}) {
   const blog = await getBlogBySlug(params.slug);
   
   if (!blog) {
