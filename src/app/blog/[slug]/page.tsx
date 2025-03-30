@@ -1,5 +1,6 @@
 // src/app/blog/[slug]/page.tsx
 import { getBlogBySlug, getRelatedBlogs } from '@/lib/data';
+import { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -7,15 +8,14 @@ import { ArrowLeft } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
-// Update the interface to match Next.js 15 requirements
-interface PageProps {
-  params: {
-    slug: string;
-  };
-  searchParams: Record<string, string | string[] | undefined>;
-}
+type Props = {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
-export default async function BlogPost({ params, searchParams }: PageProps) {
+export default async function BlogPost({ params }: Props) {
+
+
   const blog = await getBlogBySlug(params.slug);
   
   if (!blog) {
