@@ -1,3 +1,4 @@
+
 import { getBlogBySlug, getRelatedBlogs } from '@/lib/data';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -7,7 +8,6 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import type { Metadata } from 'next';
 
-// Generate metadata for SEO
 export async function generateMetadata({
   params,
 }: {
